@@ -1,4 +1,4 @@
-const Job = require("../models/job");
+const Job = require("../models/Job");
 exports.postJobs = async (req, res) => {
     try {
         // const userId = req.params.id;
