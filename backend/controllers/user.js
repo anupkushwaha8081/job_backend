@@ -142,7 +142,7 @@ exports.register = async (req, res) => {
             password: hashedPassword,
             role,
             profile: {
-                // profilePhoto: profilePhotoUrl,
+                profilePhoto: profilePhotoUrl,
                 // profilePhoto: cloudResponse.secure_url,
             },
         });
