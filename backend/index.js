@@ -26,7 +26,7 @@ app.use(
 // Setup CORS with .env variable
 app.use(
   cors({
-    origin:origin: process.env.CLIENT_URL, // Example: http://localhost:5173
+    origin: process.env.CLIENT_URL, // Example: http://localhost:5173
     methods: ["GET", "POST", "PUT"],
     credentials: true,
   })
