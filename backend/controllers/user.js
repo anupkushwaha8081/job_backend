@@ -118,39 +118,21 @@ exports.register = async (req, res) => {
                 success: false,
             });
         }
-        // console.log(res)
-        // const file = req.file;
-        // const fileUri = getDataUri(req.file);
-        // const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
         const user = await User.findOne({ email });
         if (user) {
             return res.status(400).json({
                 message: "User already exist with the email",
             });
         }
+        let profilePhotoUrl = "";
 
+    if (req.files && req.files.profilePhoto) {
+      const file = req.files.profilePhoto;
+      const fileUri = getDataUri(file);
+      const cloudResponse = await uploadFileToCloudinary(file, "anup8081");
+      profilePhotoUrl = cloudResponse.secure_url;
+    }
 
-        // console.log(req.files.profile)
-        // const file =req.files.profile;
-        // console.log(file);
-        // const supportedTypes = ["jpg", "jpeg", "png"];
-        // const filetype = file.name.split(".")[1].toLowerCase();
-        // console.log("File type:", filetype);
-        // if(!isFileTypeSupported(filetype, supportedTypes)) {
-        //     return res.status(400).json({
-        //         success: false,
-        //         message: "File format not supported.",
-        //     });
-        // }
-
-        console.log("Uploading to Cloudinary...");
-        // const cloudResponse = await uploadFileToCloudinary(file, "anup8081");
-
-
-        // let profilePhotoUrl = "";
-        // if (req.file) {
-        //     profilePhotoUrl = req.file.path; // Cloudinary URL from multer-storage-cloudinary
-        // }
 
         const hashedPassword = await bcrypt.hash(password, 10);
         await User.create({
