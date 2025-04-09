@@ -26,7 +26,10 @@ app.use(
 // Setup CORS with .env variable
 app.use(
   cors({
-    origin: process.env.CLIENT_URL, // Example: http://localhost:5173
+    origin:origin: [
+    'https://my-deploy-zeta.vercel.app', // your deployed frontend
+    'https://my-deploy-git-main-anupkushwaha8081s-projects.vercel.app' // previous one if still needed
+  ], // Example: http://localhost:5173
     methods: ["GET", "POST", "PUT"],
     credentials: true,
   })
