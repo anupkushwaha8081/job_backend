@@ -70,7 +70,7 @@ require("dotenv").config();
 
 exports.auth = (req, res, next) => {
     
-    // const token = req.cookies?.token; // Extract token from cookies
+    const token = req.cookies?.token; // Extract token from cookies
     const token = req.cookies.token;
     // console.log("Tokrn fromer mifflr ",token);
 
