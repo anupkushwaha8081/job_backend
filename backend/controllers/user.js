@@ -285,9 +285,13 @@ exports.login = async (req, res) => {
         // };
 
         return res.status(200).cookie("token", token, {
-            maxAge: 24 * 60 * 60 * 1000, // 1 day
-            httpsOnly: true,
-            sameSite: 'strict',
+            // maxAge: 24 * 60 * 60 * 1000, // 1 day
+            // httpsOnly: true,
+            // sameSite: 'strict',
+            httpOnly: true,
+  secure: true,            // Required for HTTPS
+  sameSite: "None",        // Required for cross-origin
+  maxAge: 24 * 60 * 60 * 1000,
         }).json({
             success: true,
             message: `Welcome back, ${user.fullName}!`,
