@@ -273,7 +273,7 @@ exports.login = async (req, res) => {
         const token = jwt.sign(tokenData, process.env.SECRET_KEY, {
             expiresIn: '1d'
         });
-        // console.log(token)
+        console.log(token)
 
         // user = {
         //     _id: user.id,
